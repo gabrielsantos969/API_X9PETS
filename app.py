@@ -21,15 +21,18 @@ def pegarPets():
     })
 
 """ Rota para procurar pet pelo seu ID """
-@app.route('/pets/<pet_id>')
+@app.route('/pets/id=<pet_id>')
 def find_pet_by_id(pet_id):
+
     data = bancoSupabase.table("pets").select("*").eq("id", pet_id).execute()
 
     return data.data
 
-@app.route('/pets/<str:name_pet>')
+""" Procurar pet pelo nome """
+@app.route('/pets/name=<name_pet>')
 def find_pet_by_name(name_pet):
-    data = bancoSupabase.table("pets").select("*").eq("pet_name", str(name_pet)).execute()
+
+    data = bancoSupabase.table("pets").select("*").ilike("pet_name", str(f'%{name_pet}%')).execute()
 
     return data.data
 
@@ -50,7 +53,7 @@ def add_pet():
         return Response('''{"message": "Bad Request"}''', status=400, mimetype='application/json')
 
 """ Rota para deletar um pet pelo seu ID """
-@app.route('/pets/delete/<id_pet>')
+@app.route('/pets/delete/id=<id_pet>')
 def delete_pet(id_pet):
     data = bancoSupabase.table("pets").delete().eq("id", id_pet).execute()
     return data.data
