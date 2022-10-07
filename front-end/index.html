@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X9Pets</title>
+</head>
+<body>
+    <form action="">
+        <input id="inp_peso" size="10" placeholder="Peso(Kg)">
+        <input id="inp_altura" size="10" placeholder="Altura (m)">
+        <button id="btn_submit" type="button">Enviar</button>
+    </form>
+    
+    <h1></h1>
+
+    <script>
+        $("document").ready(function(){
+            $("#btn_submit").click(function(){
+                console.log("Opaaaa")
+                var peso = parseFloat($("#inp_peso").val())
+                var altura = parseFloat($("#inp_altura").val())
+
+                $.ajax({
+                    url: "https://waichiro.pythonanywhere.com/api",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"peso": peso, "altura": altura})
+                }).done(function(data) {$("h1").html("IMC: " + data["resultado"])})
+
+            })
+        })
+    </script>
+</body>
+</html>
