@@ -1,4 +1,4 @@
-# API do sistema X9pets V.1.0
+# API do sistema X9pets V.1.0.1
 
 > Status do Projeto: Em desenvolvimento :warning:
 
@@ -8,7 +8,7 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [X] Conexão com o Banco de dados
 - [X] Error 404 em rotas
 - [X] Busca de todos os Animais
-- [ ] Update de Animais
+- [X] Update de Animais
 - [X] Delete de Animais
 - [X] Busca por ID do Animal
 - [X] Busca por NOME do Animal
@@ -26,6 +26,11 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [ ] Delete por ID de Funcionario
 
 ## Atualizações
+- V1.0.1(Em teste): 
+    - Adicionado o update de dados dos pets.
+    - Puxando mais dados do banco na busca do pet tanto por ID quanto por NOME e na busca de todos os pets.
+    - Adicionado a rota de update.
+    - Adicionado a função para update no store.
 
 # Como rodar a aplicação
 
@@ -45,9 +50,9 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 
 ### Agora você pode acessar o projeto na rota (http://localhost:5000)
 
-## Deploy da Aplicação com Netlify: :dash:
+## Deploy da Aplicação com Heroku: :dash:
 
-> https://www.link.com.br
+> https://x9pets-api.herokuapp.com/
 
 ### Participantes: 
 |Nome|Email|Presente|Função|Curso|

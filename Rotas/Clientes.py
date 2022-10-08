@@ -1,6 +1,6 @@
 from BancoDeDados.store import bancoSupabase
 from flask import jsonify
-from flask import request, Response
+from flask import Response
 
 
 def PegarTodosClientes():

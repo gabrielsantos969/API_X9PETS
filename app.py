@@ -14,7 +14,7 @@ def index():
     return jsonify({
         "greeting": "Welcome to API ",
         "developer": "Gabriel Santos",
-        "version": "1.0",
+        "version": "1.0.1",
         "github": "https://github.com/Waichiro",
         "create at": "05/10/2022"
     })
@@ -49,6 +49,11 @@ def add_pet():
 @app.route('/pets/delete/id=<id_pet>', methods=['POST'])
 def delete_pet(id_pet):
     return Animais.DeletarPet(id_pet)
+
+
+@app.route('/pets/update')
+def update_pet():
+    return Animais.AtualizarDadosPet()
 
 
 """ ==================================   ROTAS DE ACESSO A TABELA DE CLIENTES ============================================"""
