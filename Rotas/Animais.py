@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from email.errors import InvalidDateDefect
 from flask import jsonify
 from flask import request, Response
@@ -78,16 +79,21 @@ def CadastrarPet():
         petName = data['pet_name']
         tpAnimal = data['tp_animal']
         idDono = data['id_dono']
+        cdPet = data['cd_pet']
+        tpEspecie = data['tp_especie']
 
-        if petName and tpAnimal and idDono:
-            data = add_pets(petName, tpAnimal, int(idDono))
-            return jsonify(data), 201
+        if isinstance(petName, str) and isinstance(tpAnimal, int) and isinstance(idDono, int) and isinstance(cdPet, int) and isinstance(tpEspecie, int):
+            print("Estrei")
+            dataCadastro = add_pets(petName, tpAnimal, idDono, cdPet, tpEspecie)
+            return dataCadastro, 201
         else: 
-            return Response('''{"message": "Os dados não foram encontrados!"}''', status=400, mimetype='application/json')
+            return jsonify({
+                "message": "Erro no envio dos dados passados!"
+            }), 400
     except:
         return Response('''{"message": "Bad Request"}''', status=400, mimetype='application/json')
 
-def AtualizarDadosPet():
+def AtualizarDadosPet(id_pet):
 
     petUpdate = request.get_json()
 
@@ -96,16 +102,16 @@ def AtualizarDadosPet():
         idadePet = petUpdate['idade_pet']
         snVacinado = petUpdate['sn_vacinado']
 
-        if petName and idadePet and snVacinado:
-            updateData = update_pets(petName, idadePet, bool(snVacinado))
-
-            return jsonify({
-                "update_pet": updateData
-            }), 201
+        if isinstance(id_pet, int):
+            updateData = update_pets(id_pet, petName, idadePet, bool(snVacinado))
+            return updateData
         else:
-            return Response('''{"message": "O pet não foi encontrado para atualizar!"}''', status=400, mimetype='application/json')
+            return jsonify({
+                "message": "O parâmetro passado não é permitido!"
+            }), 400
+
 
     except:
-            return Response('''{"message": "Algo deu errado na atualização!"}''', status=400, mimetype='application/json')
+        return Response('''{"message": "Algo deu errado na atualização!"}''', status=400, mimetype='application/json')
 
 

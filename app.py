@@ -51,9 +51,9 @@ def delete_pet(id_pet):
     return Animais.DeletarPet(id_pet)
 
 
-@app.route('/pets/update')
-def update_pet():
-    return Animais.AtualizarDadosPet()
+@app.route('/pets/update/id=<id_pet>', methods=['POST'])
+def update_pet(id_pet):
+    return Animais.AtualizarDadosPet(id_pet)
 
 
 """ ==================================   ROTAS DE ACESSO A TABELA DE CLIENTES ============================================"""
