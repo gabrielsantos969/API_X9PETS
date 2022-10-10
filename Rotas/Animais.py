@@ -9,7 +9,7 @@ from BancoDeDados.store import add_pets, update_pets
 def PegarTodosPets():
     try:
         start = TimeExecute.StartTime()
-        allPets = bancoSupabase.table("PETS").select("pet_name, idade_pet, sn_vacinado, sn_consulta, id_dono_pet(nm_cliente, celular_cliente, email_cliente, cpf_cliente), tp_animal(raca), especie_pet(ds_tp_especie)").execute()
+        allPets = bancoSupabase.table("PETS").select("id_pets, pet_name, idade_pet, sn_vacinado, sn_consulta, id_dono_pet(nm_cliente, celular_cliente, email_cliente, cpf_cliente), tp_animal(raca), especie_pet(ds_tp_especie)").execute()
         end = TimeExecute.EndTime()
         count = len(allPets.data)
         if count != 0:
