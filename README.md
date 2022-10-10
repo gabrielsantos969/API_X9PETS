@@ -26,13 +26,18 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [ ] Delete por ID de Funcionario
 
 ## Atualizações
-- V1.0.1(Em teste): 
+- V1.0.1: 
     - Adicionado o update de dados dos pets.
     - Puxando mais dados do banco na busca do pet tanto por ID quanto por NOME e na busca de todos os pets.
     - Adicionado a rota de update.
     - Adicionado a função para update no store.
+- V1.0.2(Em desenvolvimento!):
+    - Adicionado funções de API para facilitar em processos repetitivos no código.
+    - Filtro para lista simples de animais cadastrados.
+    - Adicionado mensagens de retorno de cada função executada.
+    - Adicionado tempo de execução de cada função executa no banco de dados. 
 
-# Como rodar a aplicação
+# Como rodar a aplicação:
 
 ### No terminal clone o projeto:
     git clone https://github.com/Waichiro/API_X9PETS

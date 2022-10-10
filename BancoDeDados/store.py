@@ -1,6 +1,8 @@
+from curses import tigetflag
 from dotenv import load_dotenv
 load_dotenv()
 import os
+from FuncoesDeAPI import TimeExecute
 from flask import Response, jsonify
 from supabase import create_client, Client
 
@@ -18,12 +20,14 @@ def add_pets(pet_name, tp_animal, id_dono, cd_pet, tp_especie) -> dict:
         "cd_pet": cd_pet,
         "especie_pet": tp_especie
     }
-    print("Opa")
+    start = TimeExecute.StartTime()
     dadosCadastro = supabase.table("PETS").insert(pets).execute()
-    print(dadosCadastro.data)
+    end = TimeExecute.EndTime()
+
     return jsonify({
         "dados": dadosCadastro.data,
-        "message": "Pet cadastrado com sucesso!"
+        "message": "Pet cadastrado com sucesso!",
+        'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
     })
 
 def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
@@ -32,19 +36,19 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
         "idade_pet": idade_pet,
         "sn_vacinado": sn_vacina
     }
-
+    start = TimeExecute.StartTime()
     data = supabase.table("PETS").select("id_pets").eq("id_pets", int(id_pet)).execute()
-
+    end = TimeExecute.EndTime()
     if len(data.data) != 0:
         
         updateData = supabase.table("PETS").update(updatePet).eq("id_pets", int(id_pet)).execute()
 
         return jsonify({
            "dados": updateData.data,
-           "message": "Dados atualizados!" 
+           "message": "Dados atualizados!" ,
+           'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
         }), 201
     elif isinstance(id_pet, str):
-        print("Entrei")
         return jsonify({
             "message": "O ID não pode ser uma string!"
         }), 400
