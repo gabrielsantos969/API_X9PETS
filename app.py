@@ -26,7 +26,7 @@ def index():
 """ =================================== ROTAS COM ACESSO A TABELA DE PETS NO BANCO DE DADOS ========================================= """
 
 """ Rota para pegar todos os pets do banco de dados """
-@app.route('/all_pets', methods=['GET'])
+@app.route('/pets/all_pets', methods=['GET'])
 def all_pets():
     return Animais.PegarTodosPets()
 
