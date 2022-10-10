@@ -1,6 +1,9 @@
 from flask import Flask, jsonify
 from flask import Response
 from Rotas import Animais, Clientes 
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 app = Flask(__name__)
 
@@ -14,7 +17,8 @@ def index():
     return jsonify({
         "greeting": "Welcome to API ",
         "developer": "Gabriel Santos",
-        "version": "1.0.1",
+        "version": f'{os.getenv("VERSION")}',
+        "status": f'{os.getenv("STATUS")}',
         "github": "https://github.com/Waichiro",
         "create at": "05/10/2022"
     })
