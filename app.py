@@ -26,6 +26,7 @@ def index():
 def all_pets():
     return Animais.PegarTodosPets()
 
+""" =================================== ROTAS DE FILTRO DA TABELA DE PETS =========================================== """
 
 """ Rota para procurar pet pelo seu ID """
 @app.route('/pets/id=<pet_id>', methods=['GET'])
@@ -38,6 +39,11 @@ def find_pet_by_id(pet_id):
 def find_pet_by_name(name_pet):
     return Animais.BuscarPetPorNome(name_pet)
 
+@app.route('/pets/filtro_pets', methods=['GET'])
+def filtro_pets():
+    return Animais.FiltroDePet()
+
+""" ================================================ ROTAS DE POST DA TABELA DE PETS ======================================== """
 
 """ Rota para adicionar um novo pet por JSON """
 @app.route('/pets/add', methods=['POST'])
