@@ -40,7 +40,7 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 # Como rodar a aplicação:
 
 ### No terminal clone o projeto:
-    git clone https://github.com/Waichiro/API_X9PETS
+    git clone https://github.com/Waichiro/API_X9PETS 
 
 ### Entre na pasta do projeto:
 
