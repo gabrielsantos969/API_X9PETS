@@ -1,4 +1,4 @@
-# API do sistema X9pets V.1.0.1
+# API do sistema X9pets V.1.0.2
 
 > Status do Projeto: Em desenvolvimento :warning:
 
@@ -17,11 +17,11 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [X] Cadastro das especies
 - [ ] Deleta especies
 - [X] Atualiza especies
-- [ ] Busca de Clientes
+- [ ] Busca de todos os Clientes
 - [ ] Update de Clientes
 - [ ] Cadastro de Clientes
 - [ ] Busca por NOME do Cliente
-- [ ] Busca por ID de Cliente
+- [X] Busca por ID de Cliente
 - [ ] Busca de todos os Clientes
 - [ ] Busca por ID de Funcionario
 - [ ] Busca de todos os Funcionarios
@@ -40,7 +40,10 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
     - Filtro para lista simples de animais cadastrados.
     - Adicionado mensagens de retorno de cada função executada.
     - Adicionado tempo de execução de cada função executa no banco de dados. 
-    - Adicionado rotas de todas as especies, de cadastrar especie e de atualizar especies
+    - Adicionado rotas de todas as especies, de cadastrar especie e de atualizar especies.
+    - Adicionado novo arquiva para Funções de ESPECIE.
+    - Adicionado busca de cliente por ID.
+    - Ajustado função de API para trazer frase no return do resultExecute.
 
 # Como rodar a aplicação:
 
@@ -49,7 +52,7 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 
 ### Entre na pasta do projeto:
 
-    cd API
+    cd API_X9PETS
 ### Instale as dependencias:
 
     pip install -r requirements.txt
