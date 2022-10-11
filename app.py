@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask import Response
-from Rotas import Animais, Clientes 
+from Rotas import Animais, Clientes, Especie 
 from dotenv import load_dotenv
 load_dotenv()
 import os
@@ -43,6 +43,7 @@ def find_pet_by_id(pet_id):
 def find_pet_by_name(name_pet):
     return Animais.BuscarPetPorNome(name_pet)
 
+""" Rota de filtro do pet OBS:(Trás menos dados que os outros) """
 @app.route('/pets/filtro_pets', methods=['GET'])
 def filtro_pets():
     return Animais.FiltroDePet()
@@ -60,7 +61,7 @@ def add_pet():
 def delete_pet(id_pet):
     return Animais.DeletarPet(id_pet)
 
-
+""" Rota para atualizacao de pet por ID """
 @app.route('/pets/update/id=<id_pet>', methods=['POST'])
 def update_pet(id_pet):
     return Animais.AtualizarDadosPet(id_pet)
@@ -69,29 +70,40 @@ def update_pet(id_pet):
 """ ==================================   ROTAS DE ACESSO A TABELA DE CLIENTES ============================================"""
 
 """ Puxa todos os clientes """
-@app.route('/all_clients', methods=['GET'])
+@app.route('/cliente/all_clients', methods=['GET'])
 def all_clientes():
     return Clientes.PegarTodosClientes()
 
-""" ROTAS DE ESPECIE """
+""" Filtro de busca de cliente por ID """
+@app.route('/cliente/id=<id_cliente>')
+def cliente_find_by_id(id_cliente):
+    return Clientes.BuscarClientesPorId(id_cliente)
+
+""" ==================================== ROTAS DE ESPECIE ==================================================== """
+""" Rota para a busca de todos as especies """
 @app.route('/especies/all_especies', methods=['GET'])
 def all_especies():
-    return Animais.TodasEspecies()
+    return Especie.TodasEspecies()
 
+""" Rota de cadastastro de especie """
 @app.route('/especie/add', methods=['POST'])
 def add_especie():
-    return Animais.CadastrarEspecie()
+    return Especie.CadastrarEspecie()
 
+""" Rota para atualizacao de especie """
 @app.route('/especie/update/id=<id_especie>', methods=['POST'])
 def update_especie(id_especie):
-    return Animais.AtualizarDadosEspecie(id_especie)
+    return Especie.AtualizarDadosEspecie(id_especie)
 
 """ CORS PARA PUXAR DADOS DA API """
 @app.after_request
 def add_headers(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers","Content-Type,Authorization")
+    response.headers.add("Access-Control-Allow-Methods","*")
+    response.headers.add("Access-Control-Max-Age","86400")
     return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug = True)
+

@@ -12,6 +12,7 @@ key: str = os.getenv("SUPABASE_KEY")
 
 supabase: Client = create_client(url, key)
 
+""" Função para cadastro de PET """
 def add_pets(pet_name, tp_animal, id_dono, cd_pet, tp_especie) -> dict:
     pets= {
         "pet_name": pet_name,
@@ -27,9 +28,10 @@ def add_pets(pet_name, tp_animal, id_dono, cd_pet, tp_especie) -> dict:
     return jsonify({
         "dados": dadosCadastro.data,
         "message": "Pet cadastrado com sucesso!",
-        'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+        'time_execute': f'{TimeExecute.MsgResultTime(end, start)}'
     })
 
+""" Função para atualização de PET """
 def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
     updatePet = {
         "pet_name": pet_name,
@@ -47,7 +49,7 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
         return jsonify({
            "dados": updateData.data,
            "message": "Dados atualizados!" ,
-           'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+           'time_execute': f'{TimeExecute.MsgResultTime(end, start)}'
         }), 201
     elif count == 0:
         return jsonify({
@@ -59,6 +61,7 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
             "message": "O ID não pode ser uma string!"
         }), 400
 
+""" Função para cadastro de ESPECIE """
 def add_especie(nmEspecie, cdEspecie) -> dict:
     especie= {
         "ds_tp_especie": nmEspecie,
@@ -72,9 +75,10 @@ def add_especie(nmEspecie, cdEspecie) -> dict:
     return jsonify({
         "dados": dadosCadastro.data,
         "message": "Especie cadastrada com sucesso!",
-        'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+        'time_execute': f'{TimeExecute.MsgResultTime(end, start)}'
     })
 
+""" Função para atualização de ESPECIE """
 def update_especie(id_especie, especie_name):
     updateEspecie = {
         "ds_tp_especie": especie_name
@@ -91,7 +95,7 @@ def update_especie(id_especie, especie_name):
         return jsonify({
            "dados": updateData.data,
            "message": "Dados atualizados!" ,
-           'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+           'time_execute': f'{TimeExecute.MsgResultTime(end, start)}'
         }), 201
     elif count == 0:
         return jsonify({

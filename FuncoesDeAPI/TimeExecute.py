@@ -8,6 +8,7 @@ def EndTime():
     endTime = time.time()
     return endTime
 
-def ResultTime(endTime, startTime):
+def MsgResultTime(endTime, startTime):
     resultTime = endTime - startTime
-    return round(resultTime, 2)
+    return f'Time execute: {round(resultTime, 2)} seconds.'
+
