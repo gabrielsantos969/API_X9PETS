@@ -36,6 +36,7 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
     - Filtro para lista simples de animais cadastrados.
     - Adicionado mensagens de retorno de cada função executada.
     - Adicionado tempo de execução de cada função executa no banco de dados. 
+    - Adicionado rotas de todas as especies, de cadastrar especie e de atualizar especies
 
 # Como rodar a aplicação:
 
