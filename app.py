@@ -73,10 +73,20 @@ def update_pet(id_pet):
 def all_clientes():
     return Clientes.PegarTodosClientes()
 
+""" ROTAS DE ESPECIE """
+@app.route('/especies/all_especies', methods=['GET'])
+def all_especies():
+    return Animais.TodasEspecies()
+
 @app.route('/especie/add', methods=['POST'])
 def add_especie():
     return Animais.CadastrarEspecie()
 
+@app.route('/especie/update/id=<id_especie>', methods=['POST'])
+def update_especie(id_especie):
+    return Animais.AtualizarDadosEspecie(id_especie)
+
+""" CORS PARA PUXAR DADOS DA API """
 @app.after_request
 def add_headers(response):
     response.headers.add("Access-Control-Allow-Origin", "*")

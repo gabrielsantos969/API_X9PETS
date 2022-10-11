@@ -1,8 +1,9 @@
 
+from tracemalloc import start
 from FuncoesDeAPI import TimeExecute
 from flask import jsonify
 from flask import request, Response
-from BancoDeDados.store import add_especie, bancoSupabase
+from BancoDeDados.store import add_especie, bancoSupabase, update_especie
 from BancoDeDados.store import add_pets, update_pets
 
 """ Busca de dados do pet no banco de dados """
@@ -120,7 +121,9 @@ def AtualizarDadosPet(id_pet):
         idadePet = petUpdate['idade_pet']
         snVacinado = petUpdate['sn_vacinado']
 
-        if isinstance(id_pet, int):
+        id = int(id_pet)
+
+        if isinstance(id, int):
             updateData = update_pets(id_pet, petName, idadePet, bool(snVacinado))
             return updateData
         else:
@@ -129,7 +132,7 @@ def AtualizarDadosPet(id_pet):
             }), 400
 
     except:
-        return Response('''{"message": "Algo deu errado na atualização!"}''', status=400, mimetype='application/json')
+        return Response('''{"message": "Os dados não estão corretos!"}''', status=400, mimetype='application/json')
 
 """ Pega soomente alguns dados do pet para usar em lookups """
 def FiltroDePet():
@@ -152,6 +155,27 @@ def FiltroDePet():
     except:
         return Response('''{"message": "Algo deu errado na busca dos pets!"}''', status=400, mimetype='application/json')
 
+""" ============================================ FUNÇÔES DE ROTA PARA ESPECIE ====================================== """
+def TodasEspecies():
+    try:
+        start = TimeExecute.StartTime()
+        allEspecies = bancoSupabase.table("TP_ESPECIE").select("ds_tp_especie, cd_tp_especie").execute()
+        end = TimeExecute.EndTime()
+        count = len(allEspecies.data)
+
+        if count != 0:
+            return jsonify({
+                "especies": allEspecies.data,
+                "message": f'Foram encontradas {count} especies.',
+                "time_execute": f'Time execute: {TimeExecute.ResultTime(end, start)} seconds.'
+            }), 200
+        else:
+            return Response('''{"message": "Não foi encontrado nenhuma especie!"}''', status=400, mimetype='application/json')
+
+    except:
+        return Response('''{"message": "Ainda não há especies cadastrados no sistema"}''', status=400, mimetype='application/json')
+
+
 def CadastrarEspecie():
     data = request.get_json()
 
@@ -171,3 +195,23 @@ def CadastrarEspecie():
             }), 400
     except:
         return Response('''{"message": "Bad Request"}''', status=400, mimetype='application/json')
+
+def AtualizarDadosEspecie(id_especie):
+
+    dados = request.get_json()
+
+    try:
+        nameEspecie = dados['nm_especie']
+        
+       
+        id = int(id_especie)
+        if isinstance(id, int):
+            updateData = update_especie(id, nameEspecie)
+            return updateData
+        else:
+            return jsonify({
+                "message": "O parâmetro passado não é permitido!"
+            }), 400
+
+    except:
+        return Response('''{"message": "Algo deu errado na atualização!"}''', status=400, mimetype='application/json')

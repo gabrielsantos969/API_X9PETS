@@ -39,7 +39,8 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
     start = TimeExecute.StartTime()
     data = supabase.table("PETS").select("id_pets").eq("id_pets", int(id_pet)).execute()
     end = TimeExecute.EndTime()
-    if len(data.data) != 0:
+    count = len(data.data)
+    if count != 0:
         
         updateData = supabase.table("PETS").update(updatePet).eq("id_pets", int(id_pet)).execute()
 
@@ -48,6 +49,11 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
            "message": "Dados atualizados!" ,
            'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
         }), 201
+    elif count == 0:
+        return jsonify({
+            "message": "O ID não existe no banco de dados!"
+        }), 400
+
     elif isinstance(id_pet, str):
         return jsonify({
             "message": "O ID não pode ser uma string!"
@@ -68,6 +74,33 @@ def add_especie(nmEspecie, cdEspecie) -> dict:
         "message": "Especie cadastrada com sucesso!",
         'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
     })
+
+def update_especie(id_especie, especie_name):
+    updateEspecie = {
+        "ds_tp_especie": especie_name
+    }
+    start = TimeExecute.StartTime()
+    data = supabase.table("TP_ESPECIE").select("id_tp_especie").eq("id_tp_especie", int(id_especie)).execute()
+    end = TimeExecute.EndTime()
+    count = len(data.data)
+    print(count)
+    if count != 0:
+        
+        updateData = supabase.table("TP_ESPECIE").update(updateEspecie).eq("id_tp_especie", int(id_especie)).execute()
+
+        return jsonify({
+           "dados": updateData.data,
+           "message": "Dados atualizados!" ,
+           'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+        }), 201
+    elif count == 0:
+        return jsonify({
+            "message": "O ID não existe no banco de dados!"
+        }), 400
+    else:
+        return jsonify({
+            "message": "O ID não pode ser uma string!"
+        }), 400
 
 
 bancoSupabase = supabase
