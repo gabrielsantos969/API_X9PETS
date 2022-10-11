@@ -53,5 +53,21 @@ def update_pets(id_pet, pet_name, idade_pet, sn_vacina):
             "message": "O ID não pode ser uma string!"
         }), 400
 
+def add_especie(nmEspecie, cdEspecie) -> dict:
+    especie= {
+        "ds_tp_especie": nmEspecie,
+        "cd_tp_especie": cdEspecie,
+
+    }
+    start = TimeExecute.StartTime()
+    dadosCadastro = supabase.table("TP_ESPECIE").insert(especie).execute()
+    end = TimeExecute.EndTime()
+
+    return jsonify({
+        "dados": dadosCadastro.data,
+        "message": "Especie cadastrada com sucesso!",
+        'time_execute': f'Time execute: {TimeExecute.ResultTime(end, start)} seconds'
+    })
+
 
 bancoSupabase = supabase

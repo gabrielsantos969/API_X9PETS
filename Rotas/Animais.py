@@ -2,7 +2,7 @@
 from FuncoesDeAPI import TimeExecute
 from flask import jsonify
 from flask import request, Response
-from BancoDeDados.store import bancoSupabase
+from BancoDeDados.store import add_especie, bancoSupabase
 from BancoDeDados.store import add_pets, update_pets
 
 """ Busca de dados do pet no banco de dados """
@@ -152,4 +152,22 @@ def FiltroDePet():
     except:
         return Response('''{"message": "Algo deu errado na busca dos pets!"}''', status=400, mimetype='application/json')
 
+def CadastrarEspecie():
+    data = request.get_json()
 
+    try:
+        nmEspecie = data['nm_especie']
+        cdEspecie = data['cd_especie']
+ 
+
+        if isinstance(nmEspecie, str) and isinstance(cdEspecie, int):
+
+            dataCadastro = add_especie(nmEspecie, cdEspecie)
+
+            return dataCadastro, 201
+        else: 
+            return jsonify({
+                "message": "Erro no envio dos dados passados!"
+            }), 400
+    except:
+        return Response('''{"message": "Bad Request"}''', status=400, mimetype='application/json')

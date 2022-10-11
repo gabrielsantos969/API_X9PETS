@@ -73,6 +73,10 @@ def update_pet(id_pet):
 def all_clientes():
     return Clientes.PegarTodosClientes()
 
+@app.route('/especie/add', methods=['POST'])
+def add_especie():
+    return Animais.CadastrarEspecie()
+
 @app.after_request
 def add_headers(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
