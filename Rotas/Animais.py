@@ -159,7 +159,7 @@ def FiltroDePet():
 def TodasEspecies():
     try:
         start = TimeExecute.StartTime()
-        allEspecies = bancoSupabase.table("TP_ESPECIE").select("ds_tp_especie, cd_tp_especie").execute()
+        allEspecies = bancoSupabase.table("TP_ESPECIE").select("*").execute()
         end = TimeExecute.EndTime()
         count = len(allEspecies.data)
 

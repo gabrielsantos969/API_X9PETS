@@ -12,7 +12,11 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [X] Delete de Animais
 - [X] Busca por ID do Animal
 - [X] Busca por NOME do Animal
-- [ ] Cadastro dos Animais
+- [X] Cadastro dos Animais
+- [X] Buscar todas especies
+- [X] Cadastro das especies
+- [ ] Deleta especies
+- [X] Atualiza especies
 - [ ] Busca de Clientes
 - [ ] Update de Clientes
 - [ ] Cadastro de Clientes
