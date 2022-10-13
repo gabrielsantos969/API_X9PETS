@@ -1,4 +1,4 @@
-# API do sistema X9pets V.1.0.2
+# API do sistema X9pets V.1.1.3
 
 > Status do Projeto: Em desenvolvimento :warning:
 
@@ -28,14 +28,15 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 - [ ] Busca por NOME de Funcionario
 - [ ] Update por ID de Funcionario
 - [ ] Delete por ID de Funcionario
+- [ ] Autenticação para acesso a banco de dados
 
 ## Atualizações
-- V1.0.1: 
+- V1.1.1: 
     - Adicionado o update de dados dos pets.
     - Puxando mais dados do banco na busca do pet tanto por ID quanto por NOME e na busca de todos os pets.
     - Adicionado a rota de update.
     - Adicionado a função para update no store.
-- V1.0.2(Em desenvolvimento!):
+- V1.1.2:
     - Adicionado funções de API para facilitar em processos repetitivos no código.
     - Filtro para lista simples de animais cadastrados.
     - Adicionado mensagens de retorno de cada função executada.
@@ -44,7 +45,9 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
     - Adicionado novo arquiva para Funções de ESPECIE.
     - Adicionado busca de cliente por ID.
     - Ajustado função de API para trazer frase no return do resultExecute.
-
+- 1.1.3(Em desenvolvimento):
+    - Autenticação do banco de dados para acessar os dados(Em produção).
+    - Busca de especie por nome.
 # Como rodar a aplicação:
 
 ### No terminal clone o projeto:
