@@ -60,7 +60,7 @@ def BuscarPetPorNome(name_pet):
                 'time_execute': f'{TimeExecute.MsgResultTime(end, start)}'
             }), 201
         else:
-            return Response('''{"message": "Nenhum pet com este nome encontrado"}''', status=400, mimetype='application/json')
+            return Response('''{"message": "Nenhum pet com este nome encontrado."}''', status=400, mimetype='application/json')
     except:
         return Response('''{"message": "Algo deu errado"}''', status=400, mimetype='application/json')
 

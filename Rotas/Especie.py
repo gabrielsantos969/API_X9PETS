@@ -67,3 +67,22 @@ def AtualizarDadosEspecie(id_especie):
 
     except:
         return Response('''{"message": "Algo deu errado na atualização!"}''', status=400, mimetype='application/json')
+
+""" Faz a busca de umna especie por nome """
+def BuscarEspeciePorNome(nm_especie):
+    try:
+        start = TimeExecute.StartTime()
+        findEspecieName = bancoSupabase.table("TP_ESPECIE").select("*").ilike("ds_tp_especie", str(f'%{nm_especie}%')).execute()
+        end = TimeExecute.EndTime()
+        count = len(findEspecieName.data)
+        print(findEspecieName.data)
+        if count != 0:
+            return jsonify({
+                "dados_especie": findEspecieName.data,
+                "message": f'{count} especie foi encontrada.',
+                "time_execute": f'{TimeExecute.MsgResultTime(end, start)}' 
+            }), 201
+        else:
+            return Response('''{"message": "Nenhuma especie com este nome foi encontrado."}''', status=400, mimetype='application/json')
+    except:
+        return Response('''{"message": "Algo deu errado na busca da especie."}''', status=400, mimetype='application/json')

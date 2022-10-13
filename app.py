@@ -95,6 +95,10 @@ def add_especie():
 def update_especie(id_especie):
     return Especie.AtualizarDadosEspecie(id_especie)
 
+@app.route('/especie/name=<nm_especie>', methods=['GET'])
+def findEspecieByName(nm_especie):
+    return Especie.BuscarEspeciePorNome(nm_especie)
+
 """ CORS PARA PUXAR DADOS DA API """
 @app.after_request
 def add_headers(response):
