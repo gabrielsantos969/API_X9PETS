@@ -81,7 +81,11 @@ def cliente_find_by_id(id_cliente):
 
 """ ==================================== ROTAS DE ESPECIE ==================================================== """
 """ Rota para a busca de todos as especies """
+<<<<<<< HEAD
 @app.route('/especies/all_especies', methods=['GET'])
+=======
+@app.route('/especie/all_especies', methods=['GET'])
+>>>>>>> 1f8482270f22fdd5236791017ad2be3f66efdd19
 def all_especies():
     return Especie.TodasEspecies()
 
