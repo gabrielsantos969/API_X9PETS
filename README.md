@@ -1,6 +1,8 @@
-# API do sistema X9pets V.1.1.3
+# API do sistema X9pets
 
-> Status do Projeto: Em desenvolvimento :warning:
+![Badge em Produção](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+![Badge em Versão](http://img.shields.io/static/v1?label=Versão&message=1.1.3&color=GREEN&style=for-the-badge)
+
 
 API do sistema X9pets, a API é para a conexão com o banco de dados e a busca de dados e envio de dados.
 
