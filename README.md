@@ -70,11 +70,14 @@ API do sistema X9pets, a API é para a conexão com o banco de dados e a busca d
 
 > https://x9pets-api.herokuapp.com/
 
-### Participantes: 
+# Autor
 |Nome|Email|Presente|Função|Curso|
 | -------- | -------- | -------- |-------- | -------- |
-|Gabriel Santos|americaezo1@gmail.com|Sim|Back-End|Ciências da Computação|
+|Gabriel Santos|gabrielsantos98898@gmail.com|Sim|Full Stack|Ciências da Computação|
 
 
-[<img src="https://github.com/Waichiro.png" width=115 > <br> <sub> Gabriel Santos </sub>](https://github.com/Waichiro) |
+[<img src="https://github.com/gabrielsantos969.png" width=115 > <br> <sub> Gabriel Santos </sub>](https://github.com/gabrielsantos969) |
 | :---: |  
+
+[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/gabrielsantos969)](https://github.com/gabrielsantos969)
+[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/gabriel-santos-b53632196/)](https://www.linkedin.com/in/gabriel-santos-b53632196/)
